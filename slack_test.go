@@ -12,7 +12,7 @@ func TestApi(t *testing.T) {
 
 	Convey("Given a Slack client", t, func() {
 		mock = &MockApiFunc{}
-		client = &Client{api: mock.Handle}
+		client = &Client{get: mock.Handle}
 
 		Convey("When I call #ApiTest", func() {
 			mock.Response = `

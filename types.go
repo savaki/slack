@@ -1,5 +1,7 @@
 package slack
 
+import "encoding/json"
+
 type Attachment struct {
 	Pretext string `json:"pretext"`
 	Text    string `json:"text"`
@@ -91,4 +93,44 @@ type Bot struct {
 	Name    string     `json:"name"`
 	Deleted bool       `json:"deleted"`
 	Icons   Properties `json:"icons"`
+}
+
+type File struct {
+	Id                 string          `json:"id"`
+	Created            int             `json:"created"`
+	Timestamp          int             `json:"timestamp"`
+	Name               string          `json:"name"`
+	Title              string          `json:"title"`
+	Mimetype           string          `json:"mimetype"`
+	Filetype           string          `json:"filetype"`
+	PrettyType         string          `json:"pretty_type"`
+	User               string          `json:"user"`
+	Mode               string          `json:"mode"`
+	Editable           bool            `json:"editable"`
+	IsExternal         bool            `json:"is_external"`
+	ExternalType       string          `json:"external_type"`
+	Size               int             `json:"size"`
+	Url                string          `json:"url"`
+	UrlDownload        string          `json:"url_download"`
+	UrlPrivate         string          `json:"url_private"`
+	UrlPrivateDownload string          `json:"url_private_download"`
+	Thumb64            string          `json:"thumb_64"`
+	Thumb80            string          `json:"thumb_80"`
+	Thumb360           string          `json:"thumb_360"`
+	Thumb360Gif        string          `json:"thumb_360_gif"`
+	Thumb360W          string          `json:"thumb_360_w"`
+	Thumb360H          string          `json:"thumb_360_h"`
+	Permalink          string          `json:"permalink"`
+	EditLink           string          `json:"edit_link"`
+	Preview            string          `json:"preview"`
+	PreviewHighlight   string          `json:"preview_highlight"`
+	Lines              int             `json:"lines"`
+	LinesMore          int             `json:"lines_more"`
+	IsPublic           bool            `json:"is_public"`
+	PublicUrlShared    bool            `json:"public_url_shared"`
+	Channels           []string        `json:"channels"`
+	Groups             []string        `json:"groups"`
+	InitialComment     json.RawMessage `json:"initial_comment"`
+	NumStars           int             `json:"num_stars"`
+	IsStarred          bool            `json:"is_starred"`
 }

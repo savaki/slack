@@ -7,14 +7,16 @@ import (
 )
 
 type Client struct {
-	api ApiFunc
+	get  GetFunc
+	post PostFunc
 }
 
 func New(token string) *Client {
-	api := newApiFunc(token)
+	get, post := newApiFunc(token)
 
 	client := &Client{
-		api: api,
+		get:  get,
+		post: post,
 	}
 
 	return client
@@ -34,7 +36,7 @@ type ApiTestResp struct {
 func (c *Client) ApiTest(input ApiTestReq) (*ApiTestResp, error) {
 	values := form.AsValues(input)
 	resp := &ApiTestResp{}
-	err := c.api("api.test", values, resp)
+	err := c.get("api.test", values, resp)
 	return resp, err
 }
 
@@ -49,11 +51,11 @@ type AuthTestResponse struct {
 }
 
 func (c *Client) AuthTest() (*AuthTestResponse, error) {
-	return authTest(c.api)
+	return authTest(c.get)
 }
 
-func authTest(api ApiFunc) (*AuthTestResponse, error) {
+func authTest(get GetFunc) (*AuthTestResponse, error) {
 	resp := &AuthTestResponse{}
-	err := api("auth.test", url.Values{}, resp)
+	err := get("auth.test", url.Values{}, resp)
 	return resp, err
 }

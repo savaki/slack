@@ -27,7 +27,7 @@ type RtmStartResp struct {
 
 func (c *Client) RtmStart() (*RtmStartResp, error) {
 	resp := &RtmStartResp{}
-	err := c.api("rtm.start", url.Values{}, resp)
+	err := c.get("rtm.start", url.Values{}, resp)
 	return resp, err
 }
 
