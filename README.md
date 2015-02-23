@@ -1,5 +1,6 @@
 # slack
 
+[![GoDoc](https://godoc.org/github.com/savaki/slack?status.svg)](https://godoc.org/github.com/savaki/slack)
 [![Build Status](https://snap-ci.com/savaki/slack/branch/master/build_image)](https://snap-ci.com/savaki/slack/branch/master)
 
 go library for slack integration
